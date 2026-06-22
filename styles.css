@@ -280,7 +280,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--ink); color: var(--muted-light); padding-top: 3.5rem; }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2.5rem; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2.5rem; }
 .footer-name { color: #fff; font-size: 1.15rem; display: block; margin-bottom: .9rem; }
 .footer-name em { color: #8fd2bd; }
 .footer-brand p { max-width: 34ch; font-size: .92rem; margin-bottom: 1rem; }
