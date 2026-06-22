@@ -43,38 +43,26 @@
     reveals.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---------- Enquiry builder ----------
-     "Vraag Nu Aan" + "Toevoegen aan Aanvraag" add the chosen
-     service into the contact form's services field, then scroll
-     down to the form. Duplicates are ignored.                  */
-  const servicesInput = document.getElementById("services");
-  const selected = new Set();
-
-  function addService(name) {
-    if (!servicesInput || !name) return;
-    selected.add(name);
-    servicesInput.value = Array.from(selected).join(", ");
-    document.getElementById("contact").scrollIntoView({
+  /* ---------- Enquiry CTAs ----------
+     "Vraag Nu Aan" + "Toevoegen aan Aanvraag" scroll the
+     visitor down to the contact form.                        */
+  function scrollToContact() {
+    const contact = document.getElementById("contact");
+    if (contact) contact.scrollIntoView({
       behavior: reduced ? "auto" : "smooth",
       block: "start",
     });
-    // brief highlight so the user sees what changed
-    servicesInput.style.transition = "box-shadow .3s";
-    servicesInput.style.boxShadow = "0 0 0 3px var(--emerald-100)";
-    setTimeout(function () { servicesInput.style.boxShadow = ""; }, 900);
   }
 
   document.querySelectorAll(".enquire").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      addService(btn.getAttribute("data-service"));
-    });
+    btn.addEventListener("click", scrollToContact);
   });
 
   const enhanceLink = document.querySelector(".link-arrow");
   if (enhanceLink) {
     enhanceLink.addEventListener("click", function (e) {
       e.preventDefault();
-      addService("Verfijnde Aanvullingen");
+      scrollToContact();
     });
   }
 
@@ -116,7 +104,6 @@
       // Success (front-end demo — no backend wired up)
       if (success) success.hidden = false;
       form.reset();
-      selected.clear();
     });
 
     // Clear an error as soon as the user corrects it
