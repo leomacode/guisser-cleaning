@@ -66,55 +66,6 @@
     });
   }
 
-  /* ---------- Contact form validation ---------- */
-  const form = document.getElementById("enquiry-form");
-  const success = document.getElementById("form-success");
-
-  function setError(field, message) {
-    const input = form.elements[field];
-    const slot = form.querySelector('.error[data-for="' + field + '"]');
-    if (input) input.classList.toggle("invalid", Boolean(message));
-    if (slot) slot.textContent = message || "";
-  }
-
-  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      let ok = true;
-
-      const name = form.elements["name"].value.trim();
-      const email = form.elements["email"].value.trim();
-
-      if (!name) { setError("name", "Vul uw naam in."); ok = false; }
-      else setError("name", "");
-
-      if (!email) { setError("email", "Vul uw e-mailadres in."); ok = false; }
-      else if (!emailRe.test(email)) { setError("email", "Voer een geldig e-mailadres in."); ok = false; }
-      else setError("email", "");
-
-      if (!ok) {
-        if (success) success.hidden = true;
-        const firstInvalid = form.querySelector(".invalid");
-        if (firstInvalid) firstInvalid.focus();
-        return;
-      }
-
-      // Success (front-end demo — no backend wired up)
-      if (success) success.hidden = false;
-      form.reset();
-    });
-
-    // Clear an error as soon as the user corrects it
-    ["name", "email"].forEach(function (f) {
-      const el = form.elements[f];
-      if (el) el.addEventListener("input", function () {
-        if (el.classList.contains("invalid")) setError(f, "");
-      });
-    });
-  }
-
   /* ---------- Footer year ---------- */
   const yearSpan = document.querySelector("[data-year]");
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
