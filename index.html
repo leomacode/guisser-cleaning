@@ -1,253 +1,1450 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guisser Cleaning Service B.V. — Verheven Reinheid in Amsterdam</title>
-  <meta name="description" content="Guisser Cleaning Service B.V. — de gouden standaard van stedelijke hygiëne voor de meest verfijnde woningen en werkruimtes van Amsterdam." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Guisser Cleaning Service B.V. — Verheven Reinheid in Amsterdam
+    </title>
+    <meta
+      name="description"
+      content="Guisser Cleaning Service B.V. — de gouden standaard van stedelijke hygiëne voor de meest verfijnde woningen en werkruimtes van Amsterdam."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============================================================
+   Guisser Cleaning Service B.V. — stylesheet
+   Palette: deep emerald accent, teal-black dark sections,
+   warm off-white paper. Display: Fraunces. Body/UI: Inter.
+   ============================================================ */
 
-  <!-- ===== Header / Nav ===== -->
-  <header class="site-header" id="top">
-    <div class="container nav-inner">
-      <a href="#top" class="brand" aria-label="Guisser Cleaning Service B.V. home">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-name">Guisser <em>Cleaning Service</em> B.V.</span>
-      </a>
+      :root {
+        --paper: #f4f6f3;
+        --paper-tint: #eef2ee;
+        --card: #ffffff;
+        --ink: #0c2421; /* dark sections */
+        --ink-2: #103833;
+        --emerald: #1f6f5c;
+        --emerald-600: #195a4a;
+        --emerald-100: #dceae4;
+        --line: #e2e8e3;
+        --line-dark: #2a4641;
+        --text: #15211e;
+        --muted: #5d706b;
+        --muted-light: #aec4bd;
+        --gold: #c8a76a;
 
-      <nav class="nav-links" id="nav-links" aria-label="Hoofdnavigatie">
-        <a href="#diensten">Diensten</a>
-        <a href="#over-ons">Over Ons</a>
-        <a href="#contact" class="btn btn-solid nav-cta">Boek Nu</a>
-      </nav>
+        --maxw: 1180px;
+        --radius: 16px;
+        --radius-sm: 10px;
+        --shadow-sm:
+          0 1px 2px rgba(12, 36, 33, 0.05), 0 6px 20px rgba(12, 36, 33, 0.05);
+        --shadow-md: 0 16px 50px rgba(12, 36, 33, 0.1);
+        --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+      }
 
-      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu openen">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
+      /* ---------- Reset / base ---------- */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, sans-serif;
+        color: var(--text);
+        background: var(--paper);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      img,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        margin: 0;
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        line-height: 1.08;
+      }
+      p {
+        margin: 0;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
 
-  <!-- ===== Hero ===== -->
-  <section class="hero">
-    <div class="hero-media" role="img" aria-label="Lichte moderne woning met grote ramen en uitzicht op de Amsterdamse grachten"></div>
-    <div class="hero-scrim"></div>
-    <div class="container hero-content reveal">
-      <p class="eyebrow eyebrow-light">Amsterdam · Sinds 2014</p>
-      <h1 class="hero-title">Nederlandse Nuchterheid,<br /><em>Verheven Reinheid</em></h1>
-      <p class="hero-sub">Ervaar de gouden standaard van stedelijke hygiëne. Wij brengen orde en frisheid naar de meest verfijnde woningen en werkruimtes van Amsterdam.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-solid">Neem Contact Op</a>
-        <a href="#diensten" class="btn btn-ghost-light">Bekijk Diensten</a>
+      .container {
+        width: min(100% - 2.5rem, var(--maxw));
+        margin-inline: auto;
+      }
+
+      /* ---------- Eyebrow / section heads ---------- */
+      .eyebrow {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--emerald);
+        margin-bottom: 0.9rem;
+      }
+      .eyebrow-light {
+        color: var(--emerald-100);
+      }
+
+      .section {
+        padding: clamp(4rem, 8vw, 7rem) 0;
+      }
+      .section-tint {
+        background: var(--paper-tint);
+      }
+      .section-head {
+        margin-bottom: 3rem;
+      }
+      .section-head.center {
+        text-align: center;
+        max-width: 640px;
+        margin-inline: auto;
+      }
+      .section-title {
+        font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+      }
+      .section-lead {
+        margin-top: 1rem;
+        color: var(--muted);
+        font-size: 1.05rem;
+        max-width: 46ch;
+      }
+      .center-lead {
+        margin-inline: auto;
+      }
+
+      /* ---------- Buttons ---------- */
+      .btn {
+        --bg: var(--emerald);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        font-family: "Inter", sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        padding: 0.8rem 1.5rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition:
+          transform 0.25s var(--ease),
+          background 0.25s,
+          color 0.25s,
+          border-color 0.25s;
+        white-space: nowrap;
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .btn-solid {
+        background: var(--emerald);
+        color: #fff;
+      }
+      .btn-solid:hover {
+        background: var(--emerald-600);
+      }
+      .btn-lg {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+      }
+      .btn-ghost-light {
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.45);
+        backdrop-filter: blur(6px);
+      }
+      .btn-ghost-light:hover {
+        background: rgba(255, 255, 255, 0.18);
+      }
+      .btn-outline {
+        background: transparent;
+        color: var(--emerald);
+        border-color: var(--line);
+        width: 100%;
+      }
+      .btn-outline:hover {
+        border-color: var(--emerald);
+        background: var(--emerald);
+        color: #fff;
+      }
+
+      /* ---------- Header ---------- */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(244, 246, 243, 0.82);
+        backdrop-filter: saturate(140%) blur(12px);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 68px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .brand-mark {
+        width: 26px;
+        height: 26px;
+        border-radius: 7px;
+        background: linear-gradient(135deg, var(--emerald), var(--ink-2));
+        position: relative;
+        flex: none;
+      }
+      .brand-mark::after {
+        content: "";
+        position: absolute;
+        inset: 7px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(255, 255, 255, 0.85);
+      }
+      .brand-name {
+        font-family: "Fraunces", serif;
+        font-size: 1.06rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      .brand-name em {
+        font-style: italic;
+        color: var(--emerald);
+        font-weight: 500;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+      .nav-links a:not(.btn) {
+        font-size: 0.92rem;
+        font-weight: 500;
+        color: var(--muted);
+        transition: color 0.2s;
+      }
+      .nav-links a:not(.btn):hover {
+        color: var(--emerald);
+      }
+      .nav-cta {
+        padding: 0.6rem 1.2rem;
+      }
+
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        width: 42px;
+        height: 42px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--card);
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+      }
+      .nav-toggle span {
+        width: 18px;
+        height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+        transition:
+          transform 0.3s var(--ease),
+          opacity 0.2s;
+      }
+      .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* ---------- Hero ---------- */
+      .hero {
+        position: relative;
+        min-height: clamp(560px, 78vh, 760px);
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+      }
+      .hero-media {
+        position: absolute;
+        inset: 0;
+        background-color: #1b3a36;
+        background-image:
+          linear-gradient(180deg, rgba(8, 26, 24, 0.15), rgba(8, 26, 24, 0.55)),
+          url("https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1800&q=80");
+        background-size: cover;
+        background-position: center;
+        transform: scale(1.04);
+      }
+      .hero-scrim {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          105deg,
+          rgba(7, 24, 22, 0.78) 0%,
+          rgba(7, 24, 22, 0.5) 45%,
+          rgba(7, 24, 22, 0.15) 100%
+        );
+      }
+      .hero-content {
+        position: relative;
+        color: #fff;
+        padding: 2rem 0;
+        max-width: 660px;
+      }
+      .hero-title {
+        font-size: clamp(2.5rem, 6.2vw, 4.4rem);
+        font-weight: 500;
+      }
+      .hero-title em {
+        font-style: italic;
+        color: #8fd2bd;
+        font-weight: 400;
+      }
+      .hero-sub {
+        margin-top: 1.4rem;
+        font-size: clamp(1rem, 1.6vw, 1.18rem);
+        color: rgba(255, 255, 255, 0.86);
+        max-width: 50ch;
+      }
+      .hero-actions {
+        margin-top: 2.2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+      }
+
+      /* ---------- Feature cards ---------- */
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+      }
+      .feature-card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 2rem 1.8rem;
+        box-shadow: var(--shadow-sm);
+        transition:
+          transform 0.35s var(--ease),
+          box-shadow 0.35s;
+      }
+      .feature-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+      }
+      .feature-icon {
+        display: inline-flex;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.4rem;
+        background: var(--emerald-100);
+        color: var(--emerald);
+      }
+      .feature-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+      .feature-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.55rem;
+      }
+      .feature-card p {
+        color: var(--muted);
+        font-size: 0.97rem;
+      }
+
+      /* ---------- Packages ---------- */
+      .packages-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-bottom: 2.6rem;
+      }
+      .packages-head .section-lead {
+        margin-top: 0.9rem;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        flex: none;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--emerald-600);
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.6rem 1.1rem;
+        box-shadow: var(--shadow-sm);
+      }
+      .badge-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--emerald);
+        box-shadow: 0 0 0 3px var(--emerald-100);
+      }
+
+      .package-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+      .package-card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        flex-direction: column;
+        transition:
+          transform 0.35s var(--ease),
+          box-shadow 0.35s;
+      }
+      .package-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+      }
+      .package-card.featured {
+        outline: 2px solid var(--emerald);
+        outline-offset: -2px;
+      }
+      .package-photo {
+        position: relative;
+        aspect-ratio: 16 / 11;
+        background-size: cover;
+        background-position: center;
+      }
+      .photo-living {
+        background-color: #cdd8d2;
+        background-image:
+          linear-gradient(140deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.18)),
+          url("https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=900&q=80");
+      }
+      .photo-architecture {
+        background-color: #1c2a2a;
+        background-image:
+          linear-gradient(160deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.45)),
+          url("https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80");
+      }
+      .photo-floor {
+        background-color: #d8c7ad;
+        background-image:
+          linear-gradient(140deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.16)),
+          url("https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=900&q=80");
+      }
+      .photo-stairs {
+        background-color: #c8d0d4;
+        background-image:
+          linear-gradient(150deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.22)),
+          url("https://images.unsplash.com/photo-1580911498851-4999ad5327b6?auto=format&fit=crop&w=900&q=80");
+      }
+      .photo-home {
+        background-color: #d9d2c4;
+        background-image:
+          linear-gradient(140deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.18)),
+          url("https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80");
+      }
+      .photo-office {
+        background-color: #c4cfcc;
+        background-image:
+          linear-gradient(155deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.32)),
+          url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80");
+      }
+      .package-flag {
+        position: absolute;
+        top: 0.9rem;
+        left: 0.9rem;
+        background: var(--emerald);
+        color: #fff;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 0.35rem 0.7rem;
+        border-radius: 6px;
+      }
+      .package-body {
+        padding: 1.6rem 1.6rem 1.7rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        flex: 1;
+      }
+      .package-body h3 {
+        font-size: 1.3rem;
+      }
+      .package-body p {
+        color: var(--muted);
+        font-size: 0.95rem;
+        flex: 1;
+      }
+      .package-body .btn {
+        margin-top: 0.6rem;
+      }
+
+      /* ---------- Enhancements ---------- */
+      .enhance-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+      .enhance-card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 1.7rem 1.8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        box-shadow: var(--shadow-sm);
+        transition:
+          transform 0.3s var(--ease),
+          box-shadow 0.3s;
+      }
+      .enhance-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+      }
+      .enhance-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: var(--emerald-100);
+        color: var(--emerald);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+      }
+      .enhance-icon svg {
+        width: 22px;
+        height: 22px;
+      }
+      .enhance-card h3 {
+        font-size: 1.2rem;
+      }
+      .enhance-card p {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+      .enhance-cta {
+        background: var(--ink);
+        color: #fff;
+        border-radius: var(--radius);
+        padding: 1.8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.6rem;
+      }
+      .enhance-cta-text {
+        font-family: "Fraunces", serif;
+        font-size: 1.25rem;
+      }
+      .link-arrow {
+        color: #8fd2bd;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: gap 0.25s;
+      }
+      .link-arrow:hover {
+        gap: 0.9rem;
+      }
+
+      /* ---------- Dark testimonial / stats ---------- */
+      .dark-section {
+        background: var(--ink);
+        color: #fff;
+      }
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 3.5rem;
+        align-items: center;
+      }
+      .quote blockquote {
+        margin: 0;
+        font-family: "Fraunces", serif;
+        font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+        line-height: 1.4;
+        font-weight: 400;
+        color: #eef5f2;
+      }
+      .quote blockquote em {
+        color: #8fd2bd;
+        font-style: italic;
+      }
+      .quote figcaption {
+        margin-top: 1.8rem;
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+      }
+      .avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        flex: none;
+        background: linear-gradient(135deg, var(--emerald), var(--gold));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: #fff;
+      }
+      .cite {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.4;
+      }
+      .cite strong {
+        font-weight: 600;
+      }
+      .cite span {
+        color: var(--muted-light);
+        font-size: 0.9rem;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.8rem 2.2rem;
+      }
+      .stat {
+        border-left: 2px solid var(--line-dark);
+        padding-left: 1.1rem;
+      }
+      .stat-num {
+        display: block;
+        font-family: "Fraunces", serif;
+        font-size: 2.1rem;
+        color: #fff;
+        line-height: 1;
+      }
+      .stat-label {
+        display: block;
+        margin-top: 0.45rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted-light);
+      }
+
+      /* ---------- CTA card / contact ---------- */
+      .cta-card {
+        background: var(--paper-tint);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: clamp(2rem, 5vw, 3.5rem);
+        box-shadow: var(--shadow-sm);
+      }
+      .contact-strip {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem 2rem;
+        margin: 0 auto;
+        padding-top: 0.5rem;
+      }
+      .contact-strip li {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 0.95rem;
+        color: var(--muted);
+      }
+      .contact-strip a:hover {
+        color: var(--emerald);
+      }
+      .contact-ico {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--emerald);
+        font-size: 0.9rem;
+      }
+
+      /* ---------- Footer ---------- */
+      .site-footer {
+        background: var(--ink);
+        color: var(--muted-light);
+        padding-top: 3.5rem;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 2.5rem;
+        padding-bottom: 2.5rem;
+      }
+      .footer-name {
+        color: #fff;
+        font-size: 1.15rem;
+        display: block;
+        margin-bottom: 0.9rem;
+      }
+      .footer-name em {
+        color: #8fd2bd;
+      }
+      .footer-brand p {
+        max-width: 34ch;
+        font-size: 0.92rem;
+        margin-bottom: 1rem;
+      }
+      .footer-brand address {
+        font-style: normal;
+        font-size: 0.9rem;
+        line-height: 1.7;
+      }
+      .footer-col h4 {
+        color: #fff;
+        font-family: "Inter", sans-serif;
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+      .footer-col a {
+        display: block;
+        font-size: 0.92rem;
+        padding: 0.3rem 0;
+        transition: color 0.2s;
+      }
+      .footer-col a:hover {
+        color: #fff;
+      }
+      .social-row {
+        display: flex;
+        gap: 0.7rem;
+      }
+      .social {
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--line-dark);
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .social svg {
+        width: 19px;
+        height: 19px;
+      }
+      .social:hover {
+        background: var(--emerald);
+        color: #fff;
+        border-color: var(--emerald);
+      }
+      .footer-base {
+        border-top: 1px solid var(--line-dark);
+        padding: 1.4rem 0;
+        margin-top: 0;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+        font-size: 0.82rem;
+        color: var(--muted-light);
+      }
+
+      /* ---------- Scroll reveal ---------- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.7s var(--ease),
+          transform 0.7s var(--ease);
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* ---------- Responsive ---------- */
+      @media (max-width: 920px) {
+        .feature-grid,
+        .package-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .testimonial-grid {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .footer-brand {
+          grid-column: 1 / -1;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .nav-toggle {
+          display: flex;
+        }
+        .nav-links {
+          position: absolute;
+          top: 68px;
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          background: var(--paper);
+          border-bottom: 1px solid var(--line);
+          padding: 0.5rem 1.25rem 1.25rem;
+          clip-path: inset(0 0 100% 0);
+          pointer-events: none;
+          opacity: 0;
+          transition:
+            clip-path 0.35s var(--ease),
+            opacity 0.25s;
+        }
+        .nav-links.open {
+          clip-path: inset(0 0 0 0);
+          pointer-events: auto;
+          opacity: 1;
+        }
+        .nav-links a:not(.btn) {
+          padding: 0.85rem 0.2rem;
+          border-bottom: 1px solid var(--line);
+        }
+        .nav-cta {
+          margin-top: 0.8rem;
+        }
+
+        .feature-grid,
+        .package-grid,
+        .enhance-grid {
+          grid-template-columns: 1fr;
+        }
+        .stats {
+          grid-template-columns: 1fr 1fr;
+        }
+        .brand-name {
+          font-size: 0.92rem;
+        }
+        .contact-strip {
+          gap: 0.8rem 1.4rem;
+        }
+        .packages-head {
+          align-items: flex-start;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 1.8rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          scroll-behavior: auto;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        .hero-media {
+          transform: none;
+        }
+      }
+
+      /* keyboard focus visibility */
+      :focus-visible {
+        outline: 2px solid var(--emerald);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===== Header / Nav ===== -->
+    <header class="site-header" id="top">
+      <div class="container nav-inner">
+        <a
+          href="#top"
+          class="brand"
+          aria-label="Guisser Cleaning Service B.V. home"
+        >
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name">Guisser <em>Cleaning Service</em> B.V.</span>
+        </a>
+
+        <nav class="nav-links" id="nav-links" aria-label="Hoofdnavigatie">
+          <a href="#diensten">Diensten</a>
+          <a href="#over-ons">Over Ons</a>
+          <a href="#contact" class="btn btn-solid nav-cta">Boek Nu</a>
+        </nav>
+
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-expanded="false"
+          aria-controls="nav-links"
+          aria-label="Menu openen"
+        >
+          <span></span><span></span><span></span>
+        </button>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- ===== Why / Foundation ===== -->
-  <section class="section" id="over-ons">
-    <div class="container">
-      <header class="section-head center reveal">
-        <p class="eyebrow">De Basis</p>
-        <h2 class="section-title">Waarom Guisser Cleaning Service B.V.?</h2>
-      </header>
-
-      <div class="feature-grid">
-        <article class="feature-card reveal">
-          <span class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2"/></svg>
-          </span>
-          <h3>Betrouwbaarheid</h3>
-          <p>Punctualiteit is onze stille belofte. Wij werken met een Nederlands gevoel voor timing en precisie in elke taak.</p>
-        </article>
-
-        <article class="feature-card reveal">
-          <span class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-4.5 7-10a7 7 0 0 0-14 0c0 5.5 7 10 7 10Z"/><path d="M9.5 12c2-.3 3.8-1.8 4.5-4"/></svg>
-          </span>
-          <h3>Milieuvriendelijk</h3>
-          <p>Wij gebruiken uitsluitend premium, niet-toxische en biologisch afbreekbare middelen die veilig zijn voor uw gezin en de planeet.</p>
-        </article>
-
-        <article class="feature-card reveal">
-          <span class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s6-5.2 6-9.5A6 6 0 0 0 6 11.5C6 15.8 12 21 12 21Z"/><circle cx="12" cy="11" r="2.2"/></svg>
-          </span>
-          <h3>Lokale Kennis</h3>
-          <p>Geboren in de Jordaan begrijpen wij de unieke eisen van historische grachtenpanden en moderne lofts.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Service Packages ===== -->
-  <section class="section section-tint" id="diensten">
-    <div class="container">
-      <div class="packages-head reveal">
-        <div>
-          <p class="eyebrow">Servicepakketten</p>
-          <h2 class="section-title">Samengestelde Hygiëne-ervaringen</h2>
-          <p class="section-lead">Op maat gemaakte schoonmaakoplossingen, afgestemd op het ritme van het stadsleven. Elke service is een uitnodiging tot helderheid.</p>
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div
+        class="hero-media"
+        role="img"
+        aria-label="Lichte moderne woning met grote ramen en uitzicht op de Amsterdamse grachten"
+      ></div>
+      <div class="hero-scrim"></div>
+      <div class="container hero-content reveal">
+        <p class="eyebrow eyebrow-light">Amsterdam · Sinds 2014</p>
+        <h1 class="hero-title">
+          Nederlandse Nuchterheid,<br /><em>Verheven Reinheid</em>
+        </h1>
+        <p class="hero-sub">
+          Ervaar de gouden standaard van stedelijke hygiëne. Wij brengen orde en
+          frisheid naar de meest verfijnde woningen en werkruimtes van
+          Amsterdam.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-solid">Neem Contact Op</a>
+          <a href="#diensten" class="btn btn-ghost-light">Bekijk Diensten</a>
         </div>
-        <span class="badge"><span class="badge-dot"></span>Eco-Standaard Gegarandeerd</span>
       </div>
+    </section>
 
-      <div class="package-grid">
-        <article class="package-card featured reveal">
-          <div class="package-photo photo-living">
-            <span class="package-flag">Meest Populair</span>
-          </div>
-          <div class="package-body">
-            <h3>Standaard Verfrissing</h3>
-            <p>Een wekelijkse of tweewekelijkse onderhoudsservice, ontworpen om uw woning permanent in onberispelijke staat te houden.</p>
-            <button class="btn btn-outline enquire" data-service="Standaard Verfrissing">Vraag Nu Aan</button>
-          </div>
-        </article>
-
-        <article class="package-card reveal">
-          <div class="package-photo photo-architecture"></div>
-          <div class="package-body">
-            <h3>Architecturale Dieptereiniging</h3>
-            <p>Een intensieve, gedetailleerde sessie gericht op de structurele integriteit en verborgen hoeken van uw architecturale ruimte.</p>
-            <button class="btn btn-outline enquire" data-service="Architecturale Dieptereiniging">Vraag Nu Aan</button>
-          </div>
-        </article>
-
-        <article class="package-card reveal">
-          <div class="package-photo photo-floor"></div>
-          <div class="package-body">
-            <h3>Verhuisreiniging</h3>
-            <p>De essentiële service voor in- of uitverhuizen. Wij zorgen voor een naadloze overdracht met een vlekkeloze basis.</p>
-            <button class="btn btn-outline enquire" data-service="Verhuisreiniging">Vraag Nu Aan</button>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Enhancements ===== -->
-  <section class="section">
-    <div class="container">
-      <header class="section-head center reveal">
-        <h2 class="section-title">Verfijnde Aanvullingen</h2>
-        <p class="section-lead center-lead">Personaliseer uw schoonmaak met onze gespecialiseerde aanvullende diensten.</p>
-      </header>
-
-      <div class="enhance-grid">
-        <article class="enhance-card reveal">
-          <span class="enhance-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M12 4v16M4 12h16"/></svg>
-          </span>
-          <h3>Raamhelderheid</h3>
-          <p>Binnen- en buitenraambewassing met streeploze Nederlandse methoden voor grachtenzicht en stadslichten.</p>
-        </article>
-
-        <article class="enhance-card reveal">
-          <span class="enhance-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 4h10l-1 5H8L7 4Z"/><path d="M6 9h12l1 9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2l1-9Z"/><path d="M12 13v3"/></svg>
-          </span>
-          <h3>Was &amp; Linnengoed</h3>
-          <p>Professioneel wassen, stomen en het opmaken van bedden op hotelniveau.</p>
-        </article>
-
-        <article class="enhance-card reveal">
-          <span class="enhance-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M4 8h16"/><circle cx="8" cy="5.5" r=".6" fill="currentColor"/><circle cx="11" cy="5.5" r=".6" fill="currentColor"/><circle cx="12" cy="14.5" r="3"/></svg>
-          </span>
-          <h3>Ovenherstel</h3>
-          <p>Diepe, niet-toxische ontvetting die uw apparaat terugbrengt naar showroomconditie.</p>
-        </article>
-
-        <div class="enhance-cta reveal">
-          <p class="enhance-cta-text">Maak uw selectie compleet</p>
-          <a href="#contact" class="link-arrow">Toevoegen aan Aanvraag <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Testimonial / Stats (dark) ===== -->
-  <section class="section dark-section">
-    <div class="container testimonial-grid">
-      <figure class="quote reveal">
-        <blockquote>“Guisser heeft niet alleen veranderd hóe ons appartement eruitziet; ze hebben veranderd hoe het <em>aanvoelt</em>. Hun aandacht voor detail op onze parketvloeren en marmeren oppervlakken is ongeëvenaard.”</blockquote>
-        <figcaption>
-          <span class="avatar" aria-hidden="true">PB</span>
-          <span class="cite">
-            <strong>Pieter van der Berg</strong>
-            <span>Bewoner · Prinsengracht</span>
-          </span>
-        </figcaption>
-      </figure>
-
-      <div class="stats reveal">
-        <div class="stat"><span class="stat-num">4.9/5</span><span class="stat-label">Gemiddelde Beoordeling</span></div>
-        <div class="stat"><span class="stat-num">150+</span><span class="stat-label">Premium Klanten</span></div>
-        <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Milieuvriendelijk</span></div>
-        <div class="stat"><span class="stat-num">24u</span><span class="stat-label">Reactietijd</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Contact / CTA ===== -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="cta-card reveal">
-        <header class="section-head center">
-          <h2 class="section-title">Klaar voor een Zuivere Ruimte?</h2>
-          <p class="section-lead center-lead">Ervaar het toppunt van Amsterdamse hygiëne. Of het nu een historische woning of een modern kantoor is — wij brengen helderheid in uw omgeving.</p>
+    <!-- ===== Why / Foundation ===== -->
+    <section class="section" id="over-ons">
+      <div class="container">
+        <header class="section-head center reveal">
+          <p class="eyebrow">De Basis</p>
+          <h2 class="section-title">Waarom Guisser Cleaning Service B.V.?</h2>
         </header>
 
-        <ul class="contact-strip">
-          <li>
-            <span class="contact-ico" aria-hidden="true">✉</span>
-            <a href="mailto:info@guisser-cleaning.nl">info@guisser-cleaning.nl</a>
-          </li>
-          <li>
-            <span class="contact-ico" aria-hidden="true">☎</span>
-            <a href="tel:+31205550123">+31 (0)20 555 0123</a>
-          </li>
-          <li>
-            <span class="contact-ico" aria-hidden="true">⌖</span>
-            <span>Lodewijk van Deysselstraat 2, 1059&nbsp;PB Amsterdam</span>
-          </li>
-        </ul>
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <span class="feature-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <circle cx="12" cy="12" r="8" />
+                <path d="M12 8v4l2.5 2" />
+              </svg>
+            </span>
+            <h3>Betrouwbaarheid</h3>
+            <p>
+              Punctualiteit is onze stille belofte. Wij werken met een
+              Nederlands gevoel voor timing en precisie in elke taak.
+            </p>
+          </article>
+
+          <article class="feature-card reveal">
+            <span class="feature-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <path d="M12 21s7-4.5 7-10a7 7 0 0 0-14 0c0 5.5 7 10 7 10Z" />
+                <path d="M9.5 12c2-.3 3.8-1.8 4.5-4" />
+              </svg>
+            </span>
+            <h3>Milieuvriendelijk</h3>
+            <p>
+              Wij gebruiken uitsluitend premium, niet-toxische en biologisch
+              afbreekbare middelen die veilig zijn voor uw gezin en de planeet.
+            </p>
+          </article>
+
+          <article class="feature-card reveal">
+            <span class="feature-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <path
+                  d="M12 21s6-5.2 6-9.5A6 6 0 0 0 6 11.5C6 15.8 12 21 12 21Z"
+                />
+                <circle cx="12" cy="11" r="2.2" />
+              </svg>
+            </span>
+            <h3>Lokale Kennis</h3>
+            <p>
+              Geboren in de Jordaan begrijpen wij de unieke eisen van
+              historische grachtenpanden en moderne lofts.
+            </p>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== Footer ===== -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <span class="brand-name footer-name">Guisser <em>Cleaning Service</em> B.V.</span>
-        <p>De standaard bepalen voor hoogwaardige stedelijke hygiëne in het hart van Amsterdam.</p>
-        <address>
-          Lodewijk van Deysselstraat 2<br />
-          1059 PB Amsterdam, Nederland
-        </address>
+    <!-- ===== Service Packages ===== -->
+    <section class="section section-tint" id="diensten">
+      <div class="container">
+        <div class="packages-head reveal">
+          <div>
+            <p class="eyebrow">Servicepakketten</p>
+            <h2 class="section-title">Samengestelde Hygiëne-ervaringen</h2>
+            <p class="section-lead">
+              Op maat gemaakte schoonmaakoplossingen, afgestemd op het ritme van
+              het stadsleven. Elke service is een uitnodiging tot helderheid.
+            </p>
+          </div>
+          <span class="badge"
+            ><span class="badge-dot"></span>Eco-Standaard Gegarandeerd</span
+          >
+        </div>
+
+        <div class="package-grid">
+          <article class="package-card featured reveal">
+            <div class="package-photo photo-living">
+              <span class="package-flag">Meest Populair</span>
+            </div>
+            <div class="package-body">
+              <h3>Standaard Verfrissing</h3>
+              <p>
+                Een wekelijkse of tweewekelijkse onderhoudsservice, ontworpen om
+                uw woning permanent in onberispelijke staat te houden.
+              </p>
+              <button
+                class="btn btn-outline enquire"
+                data-service="Standaard Verfrissing"
+              >
+                Vraag Nu Aan
+              </button>
+            </div>
+          </article>
+
+          <article class="package-card reveal">
+            <div class="package-photo photo-architecture"></div>
+            <div class="package-body">
+              <h3>Periodieke Schoonmaak Scholen &amp; Gymzaal</h3>
+              <p>
+                Vaste, periodieke schoonmaak van scholen en gymzalen — hygiënisch
+                verantwoord en afgestemd op het lesrooster.
+              </p>
+              <button
+                class="btn btn-outline enquire"
+                data-service="Periodieke Schoonmaak Scholen &amp; Gymzaal"
+              >
+                Vraag Nu Aan
+              </button>
+            </div>
+          </article>
+
+          <article class="package-card reveal">
+            <div class="package-photo photo-stairs"></div>
+            <div class="package-body">
+              <h3>Trappenhuizen</h3>
+              <p>
+                Grondige reiniging van trappenhuizen in appartementencomplexen en
+                grachtenpanden — van entree tot bovenste verdieping.
+              </p>
+              <button
+                class="btn btn-outline enquire"
+                data-service="Trappenhuizen"
+              >
+                Vraag Nu Aan
+              </button>
+            </div>
+          </article>
+
+          <article class="package-card reveal">
+            <div class="package-photo photo-home"></div>
+            <div class="package-body">
+              <h3>Huizen Schoonmaak</h3>
+              <p>
+                Complete schoonmaak van woningen, van dagelijks onderhoud tot een
+                grondige beurt van iedere kamer.
+              </p>
+              <button
+                class="btn btn-outline enquire"
+                data-service="Huizen Schoonmaak"
+              >
+                Vraag Nu Aan
+              </button>
+            </div>
+          </article>
+
+          <article class="package-card reveal">
+            <div class="package-photo photo-office"></div>
+            <div class="package-body">
+              <h3>Kantoor &amp; Scholen</h3>
+              <p>
+                Professionele schoonmaak van kantoren en scholen voor een frisse,
+                productieve en gezonde werk- en leeromgeving.
+              </p>
+              <button
+                class="btn btn-outline enquire"
+                data-service="Kantoor &amp; Scholen"
+              >
+                Vraag Nu Aan
+              </button>
+            </div>
+          </article>
+
+          <article class="package-card reveal">
+            <div class="package-photo photo-floor"></div>
+            <div class="package-body">
+              <h3>Verhuisreiniging</h3>
+              <p>
+                De essentiële service voor in- of uitverhuizen. Wij zorgen voor
+                een naadloze overdracht met een vlekkeloze basis.
+              </p>
+              <button
+                class="btn btn-outline enquire"
+                data-service="Verhuisreiniging"
+              >
+                Vraag Nu Aan
+              </button>
+            </div>
+          </article>
+        </div>
       </div>
+    </section>
 
-      <nav class="footer-col" aria-label="Navigatie">
-        <h4>Navigatie</h4>
-        <a href="#diensten">Diensten</a>
-        <a href="#over-ons">Over Ons</a>
-        <a href="#over-ons">Onze Visie</a>
-      </nav>
+    <!-- ===== Enhancements ===== -->
+    <section class="section">
+      <div class="container">
+        <header class="section-head center reveal">
+          <h2 class="section-title">Verfijnde Aanvullingen</h2>
+          <p class="section-lead center-lead">
+            Personaliseer uw schoonmaak met onze gespecialiseerde aanvullende
+            diensten.
+          </p>
+        </header>
 
-      <nav class="footer-col" aria-label="Ondersteuning">
-        <h4>Ondersteuning</h4>
-        <a href="#contact">Contact</a>
-        <a href="#diensten">Servicegebieden</a>
-      </nav>
-    </div>
-    <div class="container footer-base">
-      <p>© <span data-year>2025</span> Guisser Cleaning Service B.V. Alle rechten voorbehouden.</p>    </div>
-  </footer>
+        <div class="enhance-grid">
+          <article class="enhance-card reveal">
+            <span class="enhance-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="4" y="4" width="16" height="16" rx="1.5" />
+                <path d="M12 4v16M4 12h16" />
+              </svg>
+            </span>
+            <h3>Raamhelderheid</h3>
+            <p>
+              Binnen- en buitenraambewassing met streeploze Nederlandse methoden
+              voor grachtenzicht en stadslichten.
+            </p>
+          </article>
 
-  <script src="script.js"></script>
-</body>
+          <article class="enhance-card reveal">
+            <span class="enhance-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M7 4h10l-1 5H8L7 4Z" />
+                <path d="M6 9h12l1 9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2l1-9Z" />
+                <path d="M12 13v3" />
+              </svg>
+            </span>
+            <h3>Was &amp; Linnengoed</h3>
+            <p>
+              Professioneel wassen, stomen en het opmaken van bedden op
+              hotelniveau.
+            </p>
+          </article>
+
+          <article class="enhance-card reveal">
+            <span class="enhance-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="4" y="3" width="16" height="18" rx="1.5" />
+                <path d="M4 8h16" />
+                <circle cx="8" cy="5.5" r=".6" fill="currentColor" />
+                <circle cx="11" cy="5.5" r=".6" fill="currentColor" />
+                <circle cx="12" cy="14.5" r="3" />
+              </svg>
+            </span>
+            <h3>Ovenherstel</h3>
+            <p>
+              Diepe, niet-toxische ontvetting die uw apparaat terugbrengt naar
+              showroomconditie.
+            </p>
+          </article>
+
+          <div class="enhance-cta reveal">
+            <p class="enhance-cta-text">Maak uw selectie compleet</p>
+            <a href="#contact" class="link-arrow"
+              >Toevoegen aan Aanvraag <span aria-hidden="true">→</span></a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Testimonial / Stats (dark) ===== -->
+    <section class="section dark-section">
+      <div class="container testimonial-grid">
+        <figure class="quote reveal">
+          <blockquote>
+            “Guisser heeft niet alleen veranderd hóe ons appartement eruitziet;
+            ze hebben veranderd hoe het <em>aanvoelt</em>. Hun aandacht voor
+            detail op onze parketvloeren en marmeren oppervlakken is
+            ongeëvenaard.”
+          </blockquote>
+          <figcaption>
+            <span class="avatar" aria-hidden="true">PB</span>
+            <span class="cite">
+              <strong>Pieter van der Berg</strong>
+              <span>Bewoner · Prinsengracht</span>
+            </span>
+          </figcaption>
+        </figure>
+
+        <div class="stats reveal">
+          <div class="stat">
+            <span class="stat-num">4.9/5</span
+            ><span class="stat-label">Gemiddelde Beoordeling</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">150+</span
+            ><span class="stat-label">Premium Klanten</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">100%</span
+            ><span class="stat-label">Milieuvriendelijk</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">24u</span
+            ><span class="stat-label">Reactietijd</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact / CTA ===== -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta-card reveal">
+          <header class="section-head center">
+            <h2 class="section-title">Klaar voor een Zuivere Ruimte?</h2>
+            <p class="section-lead center-lead">
+              Ervaar het toppunt van Amsterdamse hygiëne. Of het nu een
+              historische woning of een modern kantoor is — wij brengen
+              helderheid in uw omgeving.
+            </p>
+          </header>
+
+          <ul class="contact-strip">
+            <li>
+              <span class="contact-ico" aria-hidden="true">✉</span>
+              <a href="mailto:info@guissercleaningserviceb.nl"
+                >info@guissercleaningserviceb.nl</a
+              >
+            </li>
+            <li>
+              <span class="contact-ico" aria-hidden="true">☎</span>
+              <a href="tel:+31 6 83577790">+31 6 83577790</a>
+            </li>
+            <li>
+              <span class="contact-ico" aria-hidden="true">⌖</span>
+              <span>Lodewijk van Deysselstraat 2, 1059&nbsp;PB Amsterdam</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <span class="brand-name footer-name"
+            >Guisser <em>Cleaning Service</em> B.V.</span
+          >
+          <p>
+            De standaard bepalen voor hoogwaardige stedelijke hygiëne in het
+            hart van Amsterdam.
+          </p>
+          <address>
+            Lodewijk van Deysselstraat 2<br />
+            1059 PB Amsterdam, Nederland
+          </address>
+        </div>
+
+        <nav class="footer-col" aria-label="Navigatie">
+          <h4>Navigatie</h4>
+          <a href="#diensten">Diensten</a>
+          <a href="#over-ons">Over Ons</a>
+          <a href="#over-ons">Onze Visie</a>
+        </nav>
+
+        <nav class="footer-col" aria-label="Ondersteuning">
+          <h4>Ondersteuning</h4>
+          <a href="#contact">Contact</a>
+          <a href="#diensten">Servicegebieden</a>
+        </nav>
+      </div>
+      <div class="container footer-base">
+        <p>
+          © <span data-year>2025</span> Guisser Cleaning Service B.V. Alle
+          rechten voorbehouden.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      /* ============================================================
+   Guisser Cleaning Service B.V. — interactions
+   ============================================================ */
+      (function () {
+        "use strict";
+
+        /* ---------- Mobile navigation ---------- */
+        const toggle = document.getElementById("nav-toggle");
+        const links = document.getElementById("nav-links");
+
+        if (toggle && links) {
+          toggle.addEventListener("click", function () {
+            const open = links.classList.toggle("open");
+            toggle.setAttribute("aria-expanded", String(open));
+            toggle.setAttribute(
+              "aria-label",
+              open ? "Menu sluiten" : "Menu openen",
+            );
+          });
+
+          // Close menu after tapping a link (mobile)
+          links.querySelectorAll("a").forEach(function (a) {
+            a.addEventListener("click", function () {
+              links.classList.remove("open");
+              toggle.setAttribute("aria-expanded", "false");
+              toggle.setAttribute("aria-label", "Menu openen");
+            });
+          });
+        }
+
+        /* ---------- Scroll reveal ---------- */
+        const reduced = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        const reveals = document.querySelectorAll(".reveal");
+
+        if (reduced || !("IntersectionObserver" in window)) {
+          reveals.forEach(function (el) {
+            el.classList.add("in");
+          });
+        } else {
+          const io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("in");
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+          );
+          reveals.forEach(function (el) {
+            io.observe(el);
+          });
+        }
+
+        /* ---------- Enquiry CTAs ----------
+     "Vraag Nu Aan" + "Toevoegen aan Aanvraag" scroll the
+     visitor down to the contact section.                     */
+        function scrollToContact() {
+          const contact = document.getElementById("contact");
+          if (contact)
+            contact.scrollIntoView({
+              behavior: reduced ? "auto" : "smooth",
+              block: "start",
+            });
+        }
+
+        document.querySelectorAll(".enquire").forEach(function (btn) {
+          btn.addEventListener("click", scrollToContact);
+        });
+
+        const enhanceLink = document.querySelector(".link-arrow");
+        if (enhanceLink) {
+          enhanceLink.addEventListener("click", function (e) {
+            e.preventDefault();
+            scrollToContact();
+          });
+        }
+
+        /* ---------- Footer year ---------- */
+        const yearSpan = document.querySelector("[data-year]");
+        if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+      })();
+    </script>
+  </body>
 </html>
